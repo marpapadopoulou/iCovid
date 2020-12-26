@@ -53,7 +53,7 @@
 	<div class="container-fluid">
 	<div class="row">
 	
-	<form action="Login" method="post">
+	<form action="loginServlet" method="post">
 		<h3> Login </h3>
 		<div class="form-group">
 			<input type="text" name="name" class="form-control" placeholder="Enter your name here...">

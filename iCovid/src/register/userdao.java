@@ -3,6 +3,7 @@ package register;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class userdao {
@@ -57,6 +58,30 @@ public class userdao {
 			e.printStackTrace();
 		}
 		return res;
+	}
+	
+	public boolean validate(user user)
+	{
+		boolean status=false;
+		
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		
+		String sql = "SELECT * FROM user WHERE email= ? ";
+		
+		PreparedStatement ps;
+		try {
+		ps = con.prepareStatement(sql);
+		ps.setString(1,user.getEmail());
+		
+		ResultSet rs = ps.executeQuery();
+		status= rs.next();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return status;
 	}
 	
 }
