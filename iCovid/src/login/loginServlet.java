@@ -1,4 +1,4 @@
-package register;
+package login;
 
 import java.io.IOException;
 
@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import register.user;
+import register.userdao;
 
 
 public class loginServlet extends HttpServlet {
@@ -40,8 +43,11 @@ public class loginServlet extends HttpServlet {
 		 if( userdb.validate(user)){
 	        	
 			    HttpSession session=request.getSession();
-			    RequestDispatcher rd=request.getRequestDispatcher("test.jsp");
-				 rd.forward(request, response);
+			    session.setAttribute("loguser", user);
+			   /* RequestDispatcher rd=request.getRequestDispatcher("test.jsp");
+				 rd.forward(request, response);*/
+			    response.sendRedirect("test.jsp");
+			    
 
 	        }
 		 else {
