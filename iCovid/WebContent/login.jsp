@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +30,7 @@
    <!--navigation bar-->
 	<nav class="navbar navbar-expand-md navbar-fixed-top navbar-light bg-light sticky-top" role="navigation">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+		<a class="navbar-brand" href="index.jsp"><img src="img/logo.png"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 		<span class="navbar-toggler-icon"></span>
 		</button>
@@ -35,20 +38,34 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-				<a href="index.html" class="nav-link"> Home </a>
+				<a href='${pageContext.request.contextPath}' class="nav-link"> Home </a>
 				</li>
 				<li class="nav-item">
-				<a href="test.jsp" class="nav-link"> Take the test </a>
+				<a href='${pageContext.request.contextPath}/takeTest' class="nav-link"> Take the test </a>
 				</li>
 				<li class="nav-item">
-				<a href="about.jsp" class="nav-link"> About </a>
+				<a href='${pageContext.request.contextPath}/about' class="nav-link"> About </a>
 				</li>
 			</ul>
 		</div>
 	</div>
 	</nav>
 	
-	<!--log in form-->
+	<!--  If user is logged in hide the register panel-->
+	<c:if test='${not empty sessionScope.loguser}'>
+
+			<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
+		
+		<a href='${pageContext.request.contextPath}/logout'>
+			<div class="button logout">Logout</div>
+		</a>
+			<h1 style="float: right;">You're already logged in, ${sessionScope.loguser.name} !</h1>
+
+	</c:if>
+	
+	
+	<c:if test='${empty sessionScope.loguser}'>
+	
 	<div id="login">
 	<div class="container-fluid">
 	<div class="row">
@@ -73,6 +90,7 @@
 	</div>
 	</div>
 	</div>
+	</c:if>
 	
 	
 	<!--footer-->	

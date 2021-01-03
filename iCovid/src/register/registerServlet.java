@@ -1,11 +1,12 @@
 package register;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
 public class registerServlet extends HttpServlet {
@@ -34,15 +35,14 @@ public class registerServlet extends HttpServlet {
 		//create user model
 		user user=new user(name,email);
 		
-		
+		//request.setAttribute("newUser", user);
 		if(userdb.insert(user)) {
-			response.sendRedirect("login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
+			dispatcher.forward(request, response);
 		}
 		else {
-			String errorMessage="User available";
-			HttpSession regSession=request.getSession();
-			regSession.setAttribute("RegError", errorMessage);
-			response.sendRedirect("regagain.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/regagain.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 		

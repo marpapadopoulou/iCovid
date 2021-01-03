@@ -40,13 +40,15 @@ public class loginServlet extends HttpServlet {
 		//create user model
 		user user=new user(logname,logemail);
 		
+		HttpSession session=request.getSession();
+		
 		 if( userdb.validate(user)){
 	        	
-			    HttpSession session=request.getSession();
+			    
 			    session.setAttribute("loguser", user);
-			   /* RequestDispatcher rd=request.getRequestDispatcher("test.jsp");
-				 rd.forward(request, response);*/
-			    response.sendRedirect("test.jsp");
+			   RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
+				 rd.forward(request, response);
+			    /*response.sendRedirect("index.jsp");*/
 			    
 
 	        }
