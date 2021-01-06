@@ -27,7 +27,7 @@
    <!--navigation bar-->
 	<nav class="navbar navbar-expand-md navbar-fixed-top navbar-light bg-light sticky-top" role="navigation">
 	<div class="container-fluid">
-		<a class="navbar-brand" href='${pageContext.request.contextPath}'><img src="img/logo.png"></a>
+		<a class="navbar-brand" href="index.jsp"><img src="img/logo.png"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 		<span class="navbar-toggler-icon"></span>
 		</button>
@@ -35,13 +35,13 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-				<a href='${pageContext.request.contextPath}' class="nav-link"> Home </a>
+				<a href="index.jsp" class="nav-link"> Home </a>
 				</li>
 				<li class="nav-item">
-				<a href='${pageContext.request.contextPath}/takeTest' class="nav-link"> Take the test </a>
+				<a href="test.jsp" class="nav-link"> Take the test </a>
 				</li>
 				<li class="nav-item">
-				<a href='${pageContext.request.contextPath}/about' class="nav-link"> About </a>
+				<a href="about.jsp" class="nav-link"> About </a>
 				</li>
 			</ul>
 		</div>
@@ -70,7 +70,7 @@
 		
 		 <button type="submit" class="btn"> <i class="fas fa-sign-in-alt"></i> Register</button>
 		 <br><br>
-		 <a href='${pageContext.request.contextPath}/loginServlet'>Already have an account?</a>
+		 <a href="login.jsp">Already have an account?</a>
 	</form>
 	</div>
 	</div>

@@ -6,7 +6,7 @@
   	<welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
  
- <servlet>
+  <servlet>
   	<servlet-name>reg</servlet-name>
   	<servlet-class>register.registerServlet</servlet-class>
   </servlet>
@@ -26,12 +26,15 @@
   	<url-pattern>/loginServlet</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-    <servlet-name>home</servlet-name>
-    <servlet-class>.MainController</servlet-class>
+   <servlet>
+  	<servlet-name>logout</servlet-name>
+  	<servlet-class>logout.logoutServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
-    <servlet-name>home</servlet-name>
-    <url-pattern>/home</url-pattern>
+  	<servlet-name>logout</servlet-name>
+  	<url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  
+  
 </web-app>

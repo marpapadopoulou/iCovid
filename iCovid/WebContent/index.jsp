@@ -45,7 +45,7 @@
 		class="navbar navbar-expand-md navbar-fixed-top navbar-light bg-light sticky-top"
 		role="navigation">
 		<div class="container-fluid">
-			<a class="navbar-brand" href='${pageContext.request.contextPath}'><img src="img/logo.png"></a>
+			<a class="navbar-brand" href="index.jsp"><img src="img/logo.png"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive">
 				<span class="navbar-toggler-icon"></span>
@@ -53,23 +53,22 @@
 
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href='${pageContext.request.contextPath}' class="nav-link">
+					<li class="nav-item"><a href="index.jsp" class="nav-link">
 							Home </a></li>
-					<li class="nav-item"><a href='${pageContext.request.contextPath}/takeTest'
+					<li class="nav-item"><a href="test.jsp"
 						class="nav-link"> Take the test </a></li>
-					<li class="nav-item"><a href='${pageContext.request.contextPath}/about' class="nav-link">
+					<li class="nav-item"><a href="about.jsp" class="nav-link">
 							About </a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
+	
 
 	<c:if test='${not empty sessionScope.loguser}'>
 		<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
-		<a href='${pageContext.request.contextPath}/logout'>
-			<div class="button logout">Logout</div>
-		</a>
+		<a href='${pageContext.request.contextPath}/logout' class="button logout">Logout </a>
 	</c:if>
 
 	<!--background-->
@@ -82,9 +81,9 @@
 				Evaluate the risk of having been infected <br>by covid-19 and
 				get advice on what to do<br> to protect yourself and others.
 			</h3>
-			<a href='${pageContext.request.contextPath}/registerServlet' class="btn btn-outline-light btn-lg">
+			<a href="registration.jsp" class="btn btn-outline-light btn-lg">
 				Get started</a> 
-			<a href='${pageContext.request.contextPath}/about' class="btn btn-outline-light btn-lg">
+			<a href="about.jsp" class="btn btn-outline-light btn-lg">
 				More info</a>
 		</div>
 	</div>

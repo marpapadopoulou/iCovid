@@ -38,27 +38,26 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-				<a href='${pageContext.request.contextPath}' class="nav-link"> Home </a>
+				<a href="index.jsp" class="nav-link"> Home </a>
 				</li>
 				<li class="nav-item">
-				<a href='${pageContext.request.contextPath}/takeTest' class="nav-link"> Take the test </a>
+				<a href="test.jsp" class="nav-link"> Take the test </a>
 				</li>
 				<li class="nav-item">
-				<a href='${pageContext.request.contextPath}/about' class="nav-link"> About </a>
+				<a href="about.jsp" class="nav-link"> About </a>
 				</li>
 			</ul>
 		</div>
 	</div>
 	</nav>
 	
+	
 	<!--  If user is logged in hide the register panel-->
 	<c:if test='${not empty sessionScope.loguser}'>
 
 			<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
 		
-		<a href='${pageContext.request.contextPath}/logout'>
-			<div class="button logout">Logout</div>
-		</a>
+		<a href='${pageContext.request.contextPath}/logout' class="button logout">Logout </a>
 			<h1 style="float: right;">You're already logged in, ${sessionScope.loguser.name} !</h1>
 
 	</c:if>

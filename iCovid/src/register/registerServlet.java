@@ -18,8 +18,6 @@ public class registerServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +33,6 @@ public class registerServlet extends HttpServlet {
 		//create user model
 		user user=new user(name,email);
 		
-		//request.setAttribute("newUser", user);
 		if(userdb.insert(user)) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
 			dispatcher.forward(request, response);

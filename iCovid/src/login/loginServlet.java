@@ -16,15 +16,9 @@ import register.userdao;
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public loginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	
@@ -40,14 +34,13 @@ public class loginServlet extends HttpServlet {
 		//create user model
 		user user=new user(logname,logemail);
 		
-		HttpSession session=request.getSession();
 		
 		 if( userdb.validate(user)){
 	        	
-			    
-			    session.setAttribute("loguser", user);
-			   RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-				 rd.forward(request, response);
+			 HttpSession session=request.getSession();
+			 session.setAttribute("loguser", user);
+			 RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
+			 rd.forward(request, response);
 			    /*response.sendRedirect("index.jsp");*/
 			    
 
