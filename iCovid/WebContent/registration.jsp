@@ -51,8 +51,9 @@
 	</nav>
 	
 	
+	
 	<!--  If user is logged in hide the register panel-->
-	<c:if test='${not empty sessionScope.loguser}'>
+	<c:if test='${not empty sessionScope}'>
 
 			<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
 		
@@ -65,7 +66,7 @@
 	
 	<!--  If user is not logged in -->
 
-	<c:if test='${empty sessionScope.loguser}'>
+	<c:if test='${empty sessionScope}'>
 	
 	<div id="register">
 	<div class="container-fluid">

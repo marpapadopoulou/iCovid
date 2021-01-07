@@ -64,12 +64,8 @@
 		</div>
 	</nav>
 
+	  
 	
-
-	<c:if test='${not empty sessionScope.loguser}'>
-		<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
-		<a href='${pageContext.request.contextPath}/logout' class="button logout">Logout </a>
-	</c:if>
 
 	<!--background-->
 	<div id="home">
@@ -81,13 +77,20 @@
 				Evaluate the risk of having been infected <br>by covid-19 and
 				get advice on what to do<br> to protect yourself and others.
 			</h3>
-			<a href="registration.jsp" class="btn btn-outline-light btn-lg">
-				Get started</a> 
+				<a href="registration.jsp" class="btn btn-outline-light btn-lg">
+					Get started</a> 
 			<a href="about.jsp" class="btn btn-outline-light btn-lg">
 				More info</a>
 		</div>
 	</div>
 
+		<c:if test='${not empty sessionScope.loguser}'>
+	<form action="logout" method="get">
+		<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
+		<a href='${pageContext.request.contextPath}/logout' class="button logout">Logout </a>
+	</form>
+	</c:if>
+	
 
 	<!--footer-->
 	<footer class="container-fluid text center">
