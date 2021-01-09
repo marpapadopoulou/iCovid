@@ -36,5 +36,15 @@
   	<url-pattern>/logout</url-pattern>
   </servlet-mapping>
   
+     <servlet>
+  	<servlet-name>test</servlet-name>
+  	<servlet-class>test.testServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>test</servlet-name>
+  	<url-pattern>/testServlet</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

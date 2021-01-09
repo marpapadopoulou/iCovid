@@ -41,7 +41,16 @@
 				<a href="index.jsp" class="nav-link"> Home </a>
 				</li>
 				<li class="nav-item">
-				<a href="test.jsp" class="nav-link"> Take the test </a>
+					<!--  If user is logged in hide the register panel-->
+					<c:if test='${not empty loguser}'>
+							<a href="test.jsp"
+							class="nav-link"> Take the test </a>
+						
+					</c:if>
+					<c:if test='${ empty loguser}'>	
+							<a href="registration.jsp"
+							class="nav-link"> Take the test </a>
+					</c:if>
 				</li>
 				<li class="nav-item">
 				<a href="about.jsp" class="nav-link"> About </a>
@@ -52,17 +61,7 @@
 	</nav>
 	
 	
-	
-	<!--  If user is logged in hide the register panel-->
-	<c:if test='${not empty sessionScope}'>
 
-			<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
-		
-		<a href='${pageContext.request.contextPath}/logout' class="button logout">Logout </a>
-			<h1 style="float: right;">You're already logged in, ${sessionScope.loguser.name} !</h1>
-
-	</c:if>
-	
 	
 	<c:if test='${empty sessionScope}'>
 	
@@ -91,6 +90,18 @@
 	</div>
 	</div>
 	</c:if>
+	
+		
+	<!--  If user is logged in hide the register panel-->
+	<c:if test='${not empty sessionScope}'>
+
+			<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
+		
+		<a href='${pageContext.request.contextPath}/logout' class="button logout">Logout </a>
+			<h1 style="float: right;">You're already logged in, ${sessionScope.loguser.name} !</h1>
+
+	</c:if>
+	
 	
 	
 	<!--footer-->	
