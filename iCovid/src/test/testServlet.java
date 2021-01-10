@@ -19,24 +19,25 @@ public class testServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//fetch data from test
-		String age=(String) request.getAttribute("age");
-		String temp=(String) request.getAttribute("temp");
-		String drycough=(String) request.getAttribute("drycough");
-		String breathing=(String) request.getAttribute("breathing");
-		String smelltaste=(String) request.getAttribute("smelltaste");
-		String exhausted=(String) request.getAttribute("exhausted");
-		String question8=(String) request.getAttribute("question8");
-		String confirmedcase=(String) request.getAttribute("confirmedcase");
-		String vulnerability=(String) request.getAttribute("vulnerability");
+		String age=(String) request.getParameter("age");
+		String temp=(String) request.getParameter("temp");
+		String drycough=(String) request.getParameter("drycough");
+		String breathing=(String) request.getParameter("breathing");
+		String smelltaste=(String) request.getParameter("smelltaste");
+		String exhausted=(String) request.getParameter("exhausted");
+		String question8=(String) request.getParameter("question8");
+		String confirmedcase=(String) request.getParameter("confirmedcase");
+		String vulnerability=(String) request.getParameter("vulnerability");
 		
 		//create result's model
-		result result =new result(age,temp,drycough,breathing,smelltaste,exhausted,question8,confirmedcase,vulnerability);
+		result res =new result(age,temp,drycough,breathing,smelltaste,exhausted,question8,confirmedcase,vulnerability);
 		
 		HttpSession session=request.getSession();
-		session.setAttribute("result", result);
+		session.setAttribute("result", res);
 		
-		int finalResult=risk.calculateRisk(result);
-		//System.out.println(finalResult);
+		int finalResult=risk.calculateRisk(res);
+		System.out.println(finalResult);
+		System.out.println(res.age);
 		session.setAttribute("finalResult", finalResult);
 		
 		if(finalResult <= 33) {

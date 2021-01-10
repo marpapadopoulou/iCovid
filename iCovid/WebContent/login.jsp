@@ -91,7 +91,11 @@
 	</div>
 	</c:if>
 	
-		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 	<!--  If user is logged in hide the register panel-->
 	<c:if test='${not empty sessionScope}'>
 
