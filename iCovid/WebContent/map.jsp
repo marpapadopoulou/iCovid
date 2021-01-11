@@ -5,12 +5,13 @@
 
 <!doctype html>
 <html lang="en">
+
 <head>
 
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUSw9OONExtOp4ubTxBR-kC1eswnot3mc&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOLkFOsO14LjW4PVUVCja9PnvutCyuIc&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
     
@@ -83,29 +84,53 @@
 	</nav>
 
 
+<script>
+	var coords=[
+		<c:forEach var="coord" items="${coords}">
+			{ "latLng": [<c:out value="${coords.lat}"/>,
+						<c:out value="${coords.lng}"/>]},
+		</c:forEach> ];
+
+</script>
 
 
-<h1>Risk Map</h1>
+<h1 class="landing-text">Risk Map</h1>
 <div id="map"></div>
+
+
 
 <script>
 	function initMap(){
 		var options={
 				zoom:8,
-				center:{lat:37.983810, lng:23.727539}
+				center:{lat:32, lng:32}
 		}
 		
 		var map = new google.maps.Map(document.getElementById('map'),options)
 	}
+	
+	function addMarker(){
+		
+	
+		for( i = 0; i < coords.length; i++ ) {
+		    var position = new google.maps.LatLng(coords[i].latLng[0],coords[i].latLng[1]);
+	
+		    coord = new google.maps.Coord({
+		      position: position,
+		      map: map,
+		      title: coords[i].title,
+		      icon:coords[i].icon
+		    });
+		}
+	}
+		
 </script>
 
-<script defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUSw9OONExtOp4ubTxBR-kC1eswnot3mc&callback=initMap">
+
+<script>
+	initMap();
+	addMarker();
 </script>
-
-
-
-
 
 
 	<!--footer-->

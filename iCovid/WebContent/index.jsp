@@ -93,11 +93,17 @@
 		</div>
 	</div>
 
-		<c:if test='${not empty sessionScope.loguser}'>
+	<c:if test='${not empty sessionScope.loguser}'>
+	
 	<form action="logout" method="get">
 		<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
 		<a href='${pageContext.request.contextPath}/logout' class="button logout">Logout </a>
 	</form>
+	
+	<form action="mapServlet" method="post">
+		<a href='${pageContext.request.contextPath}/mapServlet' class="button map">Show me the map</a>
+	</form>
+	
 	</c:if>
 	
 

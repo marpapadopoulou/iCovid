@@ -89,7 +89,7 @@ public class userdao {
 		return status;
 	}
 	
-	public ArrayList<String> getCoords()
+	public  ArrayList<String> getCoords()
 	{
 		ArrayList<String> coords =new ArrayList<String>();
 		loadDriver(dbDriver);
@@ -107,6 +107,7 @@ public class userdao {
 				coords.add(rs.getString("lng"));
 				
 			}
+			 System.out.println(coords);
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
