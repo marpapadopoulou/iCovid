@@ -33,8 +33,6 @@ public class loginServlet extends HttpServlet {
 		String lat=request.getParameter("lat");
 		String lng=request.getParameter("lng");
 				
-		System.out.println(lat);
-		System.out.println(lng);
 
 				
 		//create user database model
