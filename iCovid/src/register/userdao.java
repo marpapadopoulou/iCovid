@@ -44,13 +44,15 @@ public class userdao {
 		boolean res=false;
 		loadDriver(dbDriver);
 		Connection con = getConnection();
-		String sql = "INSERT INTO user values(?,?)";
+		String sql = "INSERT INTO user values(?,?,?,?)";
 		
 		PreparedStatement ps;
 		try {
 		ps = con.prepareStatement(sql);
 		ps.setString(1, user.getName());
 		ps.setString(2, user.getEmail());
+		ps.setString(3, user.getLat());
+		ps.setString(4, user.getLng());
 		ps.executeUpdate();
 		res=true;
 		} catch (SQLException e) {

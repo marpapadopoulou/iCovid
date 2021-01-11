@@ -27,18 +27,22 @@ public class registerServlet extends HttpServlet {
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");
 		
+		//fetch users coordinates
+		String lat=request.getParameter("lat");
+		String lng=request.getParameter("lng");
+		
 		//create user database model
 		userdao userdb=new userdao();
 		
 		//create user model
-		user user=new user(name,email);
+		user user=new user(name,email,lat,lng);
 		
 		if(userdb.insert(user)) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		}
 		else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/regagain.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("regagain.jsp");
 			dispatcher.forward(request, response);
 		}
 		

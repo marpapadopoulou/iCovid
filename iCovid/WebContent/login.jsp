@@ -5,6 +5,8 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
+
   <head>
     <!-- Required meta tags -->
     <meta charset="ISO-8859-1">
@@ -15,12 +17,15 @@
 	
 	 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css"/>
+	
+	
     <title>login form</title>
   </head>
  
   <body>
-
+	
     <!-- Optional JavaScript; choose one of the two! -->
+     <script src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyBhOLkFOsO14LjW4PVUVCja9PnvutCyuIc" type="text/javascript"></script>
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -61,8 +66,6 @@
 	</nav>
 	
 	
-
-	
 	<c:if test='${empty sessionScope}'>
 	
 	<div id="login">
@@ -83,9 +86,13 @@
 			<input type="checkbox" class="form-check-input" id="exampleCheck1">
 			<label class="form-check-label" for="exampleCheck1">I agree with the <b>Terms of Use</b></label>
 		 </div>
-		
+		 
 		 <button type="submit" class="btn"> <i class="fas fa-sign-in-alt"></i> Submit</button>
+		 
 	</form>
+	
+	
+	
 	</div>
 	</div>
 	</div>
