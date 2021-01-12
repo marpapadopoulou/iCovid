@@ -100,7 +100,7 @@
 		<a href='${pageContext.request.contextPath}/logout' class="button logout">Logout </a>
 	</form>
 	
-	<form action="mapServlet" method="post">
+	<form action="mapServlet" method="get">
 		<a href='${pageContext.request.contextPath}/mapServlet' class="button map">Show me the map</a>
 	</form>
 	

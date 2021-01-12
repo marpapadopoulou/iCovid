@@ -32,6 +32,36 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
 <title>iCovid</title>
+
+ <script>
+	function initMap(){
+		var options={
+			zoom:8,
+			center:{lat:32, lng:32}
+		}
+		
+		var map = new google.maps.Map(document.getElementById("mapCanvas"),options)
+	}
+	
+	
+	ArrayList<String> markers=new ArrayList<String>();
+	markers=(ArrayList<String>) request.getAttribute("coords");
+	
+		
+	
+	for( i = 0; i < markers.length; i++ ) {
+		if(markers[i]!=null){
+		    var position = new google.maps.LatLng(markers[i][0],markers[i][1]);
+	
+		    marker= new google.maps.Marker({
+		      position: position,
+		      map: map,
+		    });
+		}
+		}
+		
+</script>
+    
 </head>
 
 <body>
@@ -83,56 +113,12 @@
 		</div>
 	</nav>
 
-
-<script>
-	var coords=[
-		<c:forEach var="coord" items="${coords}">
-			{ "latLng": [<c:out value="${coords.lat}"/>,
-						<c:out value="${coords.lng}"/>]},
-		</c:forEach> ];
-
-</script>
-
-
+<!--  
 <h1 class="landing-text">Risk Map</h1>
-<div id="map"></div>
+<div id="mapCanvas"></div>
+-->
 
-
-
-<script>
-	function initMap(){
-		var options={
-				zoom:8,
-				center:{lat:32, lng:32}
-		}
-		
-		var map = new google.maps.Map(document.getElementById('map'),options)
-	}
-	
-	function addMarker(){
-		
-	
-		for( i = 0; i < coords.length; i++ ) {
-		    var position = new google.maps.LatLng(coords[i].latLng[0],coords[i].latLng[1]);
-	
-		    coord = new google.maps.Coord({
-		      position: position,
-		      map: map,
-		      title: coords[i].title,
-		      icon:coords[i].icon
-		    });
-		}
-	}
-		
-</script>
-
-
-<script>
-	initMap();
-	addMarker();
-</script>
-
-
+ 
 	<!--footer-->
 	<footer class="container-fluid text center">
 		<h3>Contact us</h3>
