@@ -107,7 +107,7 @@ public class userdao {
 				coords.add(rs.getString("lng"));
 				
 			}
-			 System.out.println(coords);
+			 //System.out.println(coords);
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

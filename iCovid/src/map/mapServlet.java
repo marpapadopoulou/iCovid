@@ -28,7 +28,7 @@ public class mapServlet extends HttpServlet {
 		ArrayList<String> list= new ArrayList<String>();
 		list= (ArrayList<String>) userdb.getCoords();
 		request.setAttribute("coords",list);
-			System.out.println(list);
+			//System.out.println(list);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("map.jsp");
 		rd.forward(request, response);	

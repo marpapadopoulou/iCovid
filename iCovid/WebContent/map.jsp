@@ -3,6 +3,10 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+ 
+
+
 <!doctype html>
 <html lang="en">
 
@@ -33,39 +37,16 @@
 <link rel="stylesheet" href="style.css" />
 <title>iCovid</title>
 
- <script>
-	function initMap(){
-		var options={
-			zoom:8,
-			center:{lat:32, lng:32}
-		}
-		
-		var map = new google.maps.Map(document.getElementById("mapCanvas"),options)
-	}
-	
-	
-	ArrayList<String> markers=new ArrayList<String>();
-	markers=(ArrayList<String>) request.getAttribute("coords");
-	
-		
-	
-	for( i = 0; i < markers.length; i++ ) {
-		if(markers[i]!=null){
-		    var position = new google.maps.LatLng(markers[i][0],markers[i][1]);
-	
-		    marker= new google.maps.Marker({
-		      position: position,
-		      map: map,
-		    });
-		}
-		}
-		
-</script>
+ 
     
 </head>
 
 <body>
-
+		
+	<%@page import="java.util.ArrayList"%> 
+		
+		
+		
 	<!-- Optional JavaScript; choose one of the two! -->
 
 	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -113,10 +94,45 @@
 		</div>
 	</nav>
 
-<!--  
+<% 
+ 	ArrayList<String> markers= new ArrayList<String>();
+ 	markers=(ArrayList<String>) session.getAttribute("coords");	
+ 	System.out.println(markers);
+ %>	
+ 	
+ 	
+<script>
+		var markers=[
+			<c:forEach var="marker" items="${markers}">
+				{"latLng":[<c:out value="${marker.lat}" />
+						   <c:out value="${marker.lng}" />]
+				}
+			</c:forEach>	
+		];
+			
+		function initMap(){
+				var map;
+				var options={
+					zoom:8,
+					center:{lat:40.6, lng:22.07}
+					}
+				map = new google.maps.Map(document.getElementById("map"),options);
+			
+			for( i = 0; i < markers.length; i++ ) {
+			    var position = new google.maps.LatLng(markers[i][1],markers[i][2]);
+
+			    marker = new google.maps.Marker({
+			      position: position,
+			      map: map
+			    });
+			} 
+			    
+		}	
+					
+</script>
+  
 <h1 class="landing-text">Risk Map</h1>
-<div id="mapCanvas"></div>
--->
+<div id="map"></div>
 
  
 	<!--footer-->
