@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
- 
+ <%@page import="java.util.ArrayList"%> 
 
 
 <!doctype html>
@@ -37,15 +37,58 @@
 <link rel="stylesheet" href="style.css" />
 <title>iCovid</title>
 
+ <script type="text/javascript">
+	
  
+//	ArrayList<String> markers= new ArrayList<String>();
+	//markers=(ArrayList<String>) session.getAttribute("coords");	
+//	System.out.println(markers);
+		
+
+	//	var markers=[
+	//		<c:forEach var="marker" items="${markers}">
+	//		{"latLng":[<c:out value="${marker.lat}" />
+	//					<c:out value="${marker.lng}" />]
+	//			}
+	//		</c:forEach>	
+	//	];
+	
+		var markers=[
+			[40.788, 22.067],
+			[ 40.66, 22.45],
+			[ 40.7, 22.3],
+			[ 40.66666, 22.4677],
+			[ 40.6258365, 22.072613699999998]	
+		];
+		
+		function initMap(){
+				var options={
+					zoom:8,
+					center:new google.maps.LatLng(40.6,22.07)
+				}
+				var map = new google.maps.Map(document.getElementById("map"),options);
+				
+				addMarkers(map,markers);
+		}
+				
+		function addMarkers(map,locations){
+			
+			for(var i = 0; i < locations.length; i++ ) {
+				
+			    var position = new google.maps.LatLng(markers[0],markers[1]);
+
+			    var marker = new google.maps.Marker({
+			      position: position,
+			      map: map
+			    });
+			} 	    
+		}	
+					
+</script>
     
 </head>
 
 <body>
-		
-	<%@page import="java.util.ArrayList"%> 
-		
-		
 		
 	<!-- Optional JavaScript; choose one of the two! -->
 
@@ -94,43 +137,7 @@
 		</div>
 	</nav>
 
-<% 
- 	ArrayList<String> markers= new ArrayList<String>();
- 	markers=(ArrayList<String>) session.getAttribute("coords");	
- 	System.out.println(markers);
- %>	
- 	
- 	
-<script>
-		var markers=[
-			<c:forEach var="marker" items="${markers}">
-				{"latLng":[<c:out value="${marker.lat}" />
-						   <c:out value="${marker.lng}" />]
-				}
-			</c:forEach>	
-		];
-			
-		function initMap(){
-				var map;
-				var options={
-					zoom:8,
-					center:{lat:40.6, lng:22.07}
-					}
-				map = new google.maps.Map(document.getElementById("map"),options);
-			
-			for( i = 0; i < markers.length; i++ ) {
-			    var position = new google.maps.LatLng(markers[i][1],markers[i][2]);
 
-			    marker = new google.maps.Marker({
-			      position: position,
-			      map: map
-			    });
-			} 
-			    
-		}	
-					
-</script>
-  
 <h1 class="landing-text">Risk Map</h1>
 <div id="map"></div>
 
