@@ -12,7 +12,6 @@
 
 <head>
 
-
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOLkFOsO14LjW4PVUVCja9PnvutCyuIc&callback=initMap&libraries=&v=weekly"
@@ -37,23 +36,10 @@
 <link rel="stylesheet" href="style.css" />
 <title>iCovid</title>
 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
  <script type="text/javascript">
 	
- 
-//	ArrayList<String> markers= new ArrayList<String>();
-	//markers=(ArrayList<String>) session.getAttribute("coords");	
-//	System.out.println(markers);
-		
-
-	//	var markers=[
-	//		<c:forEach var="marker" items="${markers}">
-	//		{"latLng":[<c:out value="${marker.lat}" />
-	//					<c:out value="${marker.lng}" />]
-	//			}
-	//		</c:forEach>	
-	//	];
-	
-		var markers=[
+		var coords=[
 			[40.788, 22.067],
 			[ 40.66, 22.45],
 			[ 40.7, 22.3],
@@ -68,24 +54,23 @@
 				}
 				var map = new google.maps.Map(document.getElementById("map"),options);
 				
-				addMarkers(map,markers);
+				 
+				addMarkers(map,coords);
 		}
 				
 		function addMarkers(map,locations){
 			
 			for(var i = 0; i < locations.length; i++ ) {
-				
-			    var position = new google.maps.LatLng(markers[0],markers[1]);
+				const coord=coords[i];
+			    var position = new google.maps.LatLng(coord[0],coord[1]);
 
-			    var marker = new google.maps.Marker({
-			      position: position,
-			      map: map
-			    });
+			   var marker = new google.maps.Marker({
+			     position: position,
+			     map: map
+			   });
 			} 	    
-		}	
-					
+		}					
 </script>
-    
 </head>
 
 <body>
