@@ -37,40 +37,54 @@
 <title>iCovid</title>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
- <script type="text/javascript">
+<script type="text/javascript">
 	
-		var coords=[
-			[40.788, 22.067],
-			[ 40.66, 22.45],
-			[ 40.7, 22.3],
-			[ 40.66666, 22.4677],
-			[ 40.6258365, 22.072613699999998]	
-		];
+ <%
+ ArrayList<String> markers=new ArrayList<String>();
+ markers=(ArrayList<String>)request.getAttribute("coords");
+ %>
+	var coords=new String[markers.size()][2];
+		 for(int i=0; i<markers.size(); i++){
+			 coords[i][0]=markers.get(i);
+			 coords[i][1]=markers.get(i+1);
+		 }
+	 
+ 
+ 
+	//	var coords=[
+	//		[40.788, 22.067],
+	//		[ 40.66, 22.45],
+	//		[ 40.7, 22.3],
+	//		[ 40.66666, 22.4677],
+	//		[ 40.6258365, 22.072613699999998]	
+	//	];
 		
-		function initMap(){
-				var options={
-					zoom:8,
-					center:new google.maps.LatLng(40.6,22.07)
-				}
-				var map = new google.maps.Map(document.getElementById("map"),options);
+	function initMap(){
+		var options={
+			zoom:8,
+			center:new google.maps.LatLng(40.6,22.07)
+		}
+		var map = new google.maps.Map(document.getElementById("map"),options);
 				
 				 
-				addMarkers(map,coords);
-		}
+		addMarkers(map,coords);
+	}
 				
-		function addMarkers(map,locations){
+	function addMarkers(map,locations){
 			
-			for(var i = 0; i < locations.length; i++ ) {
-				const coord=coords[i];
-			    var position = new google.maps.LatLng(coord[0],coord[1]);
+		for(var i = 0; i < locations.length; i++ ) {
+			const coord=coords[i];
+			var position = new google.maps.LatLng(coord[0],coord[1]);
 
-			   var marker = new google.maps.Marker({
-			     position: position,
-			     map: map
-			   });
-			} 	    
-		}					
+			var marker = new google.maps.Marker({
+			   position: position,
+			    map: map
+			 });
+		} 	    
+	
+	}					
 </script>
+
 </head>
 
 <body>
