@@ -4,21 +4,21 @@ package register;
 public class user {
 	String name;
 	String email;
-	String lat;
-	String lng;
+	Float lat;
+	Float lng;
 	
 	public user() {
 		
 	}
 		
-	public user(String name, String email,String lat,String lng) {
+	public user(String name, String email,Float lat, Float lng) {
 		this.name=name;
 		this.email=email;
 		this.lat=lat;
 		this.lng=lng;
+		
 	}
 	
-		
 		public String getName() {
 			return name;
 		}
@@ -35,19 +35,19 @@ public class user {
 			this.email=email;
 		}
 		
-		public String getLat() {
+		public Float getLat() {
 			return lat;
 		}
 		
-		public void setLat(String lat) {
+		public void setLat(Float lat) {
 			this.lat=lat;
 		}
 		
-		public String getLng() {
+		public Float getLng() {
 			return lng;
 		}
 		
-		public void setLng(String lng) {
+		public void setLng(Float lng) {
 			this.lng=lng;
 		}
 }

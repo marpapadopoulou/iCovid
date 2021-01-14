@@ -8,6 +8,12 @@
 
 
   <head>
+  	
+  	 <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOLkFOsO14LjW4PVUVCja9PnvutCyuIc&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+  	
     <!-- Required meta tags -->
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -66,6 +72,21 @@
 	</nav>
 	
 	
+	
+	 <script>
+		if(window.navigator.geolocation){
+			x=window.navigator.geolocation.getCurrentPosition(success, failure);
+			
+			function success(position){
+				document.getElementById('lat').value=position.coords.latitude;
+				document.getElementById('lng').value=position.coords.longitude;
+		
+			}
+			function failure(){}
+		}
+    </script>
+	
+	
 	<c:if test='${empty sessionScope}'>
 	
 	<div id="login">
@@ -81,6 +102,9 @@
 		<div class="form-group">
 			<input type="email" name="email" class="form-control"  placeholder="Enter your email here...">
 		</div>
+		
+			<input type="hidden" name="lat" id="lat" value="">
+		 	<input type="hidden" name="lng" id="lng" value="">
 		
 		 <div class="form-group form-check">
 			<input type="checkbox" class="form-check-input" id="exampleCheck1">

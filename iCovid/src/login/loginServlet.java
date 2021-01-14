@@ -30,10 +30,9 @@ public class loginServlet extends HttpServlet {
 		String logemail=request.getParameter("email");
 		
 		//fetch users coordinates
-		String lat=request.getParameter("lat");
-		String lng=request.getParameter("lng");
+		Float lat = Float.parseFloat(request.getParameter("lat"));
+		Float lng = Float.parseFloat(request.getParameter("lng"));
 				
-
 				
 		//create user database model
 		userdao userdb=new userdao();
@@ -41,16 +40,12 @@ public class loginServlet extends HttpServlet {
 		//create user model
 		user user=new user(logname,logemail,lat,lng);
 		
-		
 		 if( userdb.validate(user)){
-	        	
 			 HttpSession session=request.getSession();
 			 session.setAttribute("loguser", user);
 			 RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-			 rd.forward(request, response);
-			    
-
-	        }
+			 rd.forward(request, response);   
+		 }
 		 else {
 			 
 			 RequestDispatcher rd=request.getRequestDispatcher("login.jsp");

@@ -37,27 +37,34 @@
 <title>iCovid</title>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript">
-	
- <%
- ArrayList<String> markers=new ArrayList<String>();
- markers=(ArrayList<String>)request.getAttribute("coords");
- %>
-	var coords=new String[markers.size()][2];
-		 for(int i=0; i<markers.size(); i++){
-			 coords[i][0]=markers.get(i);
-			 coords[i][1]=markers.get(i+1);
-		 }
 	 
+<script type="text/javascript">	 
+
+<% ArrayList<Float> list= new ArrayList<Float>();%>
+<%list= (ArrayList<Float>)request.getAttribute("coords");%>
+     //2d array
+<%float[][] arr = new float[list.size()/2][2]; %>
  
  
-	//	var coords=[
-	//		[40.788, 22.067],
-	//		[ 40.66, 22.45],
-	//		[ 40.7, 22.3],
-	//		[ 40.66666, 22.4677],
-	//		[ 40.6258365, 22.072613699999998]	
-	//	];
+ var arr = [];
+//populating the 2d array with each user's coords
+<% for (int reg=0; reg<list.size(); reg++) { %>
+ 	<% for (int i=0; i<list.size()/2; i++) { %>
+ 	arr.push([]);
+ 		<% for (int j=0 ; j<2; j++) { %>
+		 	arr[<%= i %>][<%=j%>] = <%= list.get(reg++) %>;
+	 <% } %>
+   <% } %>
+ <% } %>
+	 
+ for (var i in arr) 
+ {
+    console.log("row " + i);
+    for (var j in arr[i]) 
+      {
+       console.log(" " + arr[i][j]);
+      }
+ }
 		
 	function initMap(){
 		var options={
@@ -65,24 +72,27 @@
 			center:new google.maps.LatLng(40.6,22.07)
 		}
 		var map = new google.maps.Map(document.getElementById("map"),options);
-				
-				 
-		addMarkers(map,coords);
-	}
-				
-	function addMarkers(map,locations){
-			
-		for(var i = 0; i < locations.length; i++ ) {
-			const coord=coords[i];
-			var position = new google.maps.LatLng(coord[0],coord[1]);
-
-			var marker = new google.maps.Marker({
-			   position: position,
-			    map: map
-			 });
-		} 	    
+					    
 	
-	}					
+	addMarkers(map,arr);
+}
+	
+	
+function addMarkers(map,locations){
+		
+	for(var i = 0; i < arr.length; i++ ) {
+		
+		const coord=arr[i];
+		var position = new google.maps.LatLng(coord[0],coord[1]);
+		var marker = new google.maps.Marker({
+		   position: position,
+		    map: map
+		 });
+		}
+		
+	}
+
+						
 </script>
 
 </head>
@@ -137,6 +147,9 @@
 	</nav>
 
 
+
+
+ 
 <h1 class="landing-text">Risk Map</h1>
 <div id="map"></div>
 
