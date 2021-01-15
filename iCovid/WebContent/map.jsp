@@ -33,7 +33,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="styleNew.css" />
 <title>iCovid</title>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -139,9 +139,21 @@ function addMarkers(map,locations){
 							<a href="registration.jsp"
 							class="nav-link"> Take the test </a>
 					</c:if>
-					<li class="nav-item"><a href="about.jsp" class="nav-link">
+					<li class="nav-item"><a href='${pageContext.request.contextPath}/#about' class="nav-link">
 							About </a></li>
 				</ul>
+				
+				<c:if test='${not empty sessionScope.loguser}'> 
+	
+					<form action="logout" method="get">
+						<div class="button nameuser">Logged as, ${sessionScope.loguser.name}</div>
+						<a href='${pageContext.request.contextPath}/logout' class="button logout">Logout </a>
+					</form>
+	
+			  	</c:if> 
+				<c:if test='${ empty loguser}'>
+					<a href="login.jsp" class="signIn-btn"> Sign in</a>
+				</c:if>
 			</div>
 		</div>
 	</nav>
@@ -150,7 +162,7 @@ function addMarkers(map,locations){
 
 
  
-<h1 class="landing-text">Risk Map</h1>
+<h1 class="landing-text-map">Live Covid-19 cases map</h1>
 <div id="map"></div>
 
  
