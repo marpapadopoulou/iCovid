@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import register.user;
+import register.userdao;
+
 
 public class testServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,10 +38,13 @@ public class testServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		session.setAttribute("result", res);
 		
-		int finalResult=risk.calculateRisk(res);
-		System.out.println(finalResult);
-		System.out.println(res.age);
+		Float finalResult=(float) risk.calculateRisk(res);
+		//System.out.println(finalResult);
+		//System.out.println(res.age);
 		session.setAttribute("finalResult", finalResult);
+		user loguser=(user)session.getAttribute("loguser");
+		userdao userdb=new userdao();
+		userdb.insertRes(finalResult, loguser);
 		
 		if(finalResult <= 33) {
 			String risk = "low";

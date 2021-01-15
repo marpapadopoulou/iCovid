@@ -6,16 +6,15 @@ public class user {
 	String email;
 	Float lat;
 	Float lng;
+	Float res;
 	
-	public user() {
 		
-	}
-		
-	public user(String name, String email,Float lat, Float lng) {
+	public user(String name, String email,Float lat, Float lng, Float res) {
 		this.name=name;
 		this.email=email;
 		this.lat=lat;
 		this.lng=lng;
+		this.res=res;
 		
 	}
 	
@@ -49,5 +48,12 @@ public class user {
 		
 		public void setLng(Float lng) {
 			this.lng=lng;
+		}
+		public float getRes() {
+			return res;
+		}
+		
+		public void setResult(float res) {
+			this.res=res;
 		}
 }
