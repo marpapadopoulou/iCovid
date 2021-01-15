@@ -141,7 +141,6 @@
 		 			<h1 class="header">Terms of Use</h1>
 		 			<p class="welcome">Welcome to iCovid!</p>
 					<p>These terms govern your use of iCovid once you are registered.<br>When you create your account you must agree and accept the following terms:</p>
-					<p>	<br> <b> -> </b>This project is not an original idea but has been partly based on this app. </p>
 					<p>	<br>  <b>-> </b>Although our test results are grounded on research and analysis of the available 
 					data from reliable resources,they cannot ,in anyway,replace an official diagnostic process from your doctor. </p>
 					<p>	<br>  <b>-></b> In order for us to offer you the complete experience of iCovid,we will be using your IP address to estimate your current location. </p>

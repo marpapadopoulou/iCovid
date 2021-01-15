@@ -136,6 +136,44 @@ html,body{
 	color:white;
 }
 
+.modal{
+	display:none;
+	position:fixed;
+	z-index:1;
+	left:0;
+	top:0;
+	height:100;
+	width:100;
+	overflow:auto;
+	background-color:rgba(0,0,0,0.5);
+	
+}
+
+.modal-content{
+	margin:30% auto;
+	padding:20px;
+	width:70%;
+}
+
+.closeBtn{
+	color:grey;
+	float:right;
+	font-size:30px;
+}
+
+.closeBtn:hover, .closeBtn:focus{
+	color:black;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+#modalBtn{
+	background:none;
+	border:none;
+	margin-left:43%;
+	margin-top:10px;
+	color:ghostwhite;
+}
 
 
 /*---Login form---*/

@@ -127,14 +127,14 @@
 	</div>
 	<div class="col">
 		 <h1 class="display-R">The Idea</h1>
-         <h3 class="infoR">iCOVID is a medical digital evaluation platform. The application promotes safe and accessible risk assessment of the SARS-CoV-2 virus disease, also known as coronavirus. The risk assessment is based on the user's symptoms, their immune system vulnerabity and their possible exposure history to the virus. After thorough research and analysis of the available data and datasets from reliable sources, such as the NPHO and the World Health Organization, we've built the test, on which the application is based.</h3>
+         <h3 class="infoR">iCOVID is a medical digital evaluation platform. The application promotes safe and accessible risk assessment of the SARS-CoV-2 virus disease, also known as coronavirus. The risk assessment is based on the user's symptoms, their immune system vulnerability and their possible exposure history to the virus. After thorough research and analysis of the available data and datasets from reliable sources, such as the NPHO and the World Health Organization, we've built the test, on which the application is based.</h3>
 	</div>
 	</div>
 	
 	<div class="row">
 	<div class="col">
 		<h1 class="display-L">The Goal</h1>
-        <h3 class="infoL">The application was designed to raise awareness and advise citizens to act precautionarily and responsibly in times of pandemic for the safety of themselves and their fellow citizens. The idea is to provide an application to the citizens that allows them to evaluate the risk they have of having the infamous COVID-19. The users should strictly be older than 18 years old.</h3>
+        <h3 class="infoL">The application was designed to raise awareness and advise citizens to act precautionary and responsibly in times of pandemic for the safety of themselves and their fellow citizens. The idea is to provide an application to the citizens that allows them to evaluate the risk they have of having the infamous COVID-19. The users should strictly be older than 18 years old.</h3>
 	</div>
 	<div class="col">
 		<img src="img/about2.jpg" class="about-img">
