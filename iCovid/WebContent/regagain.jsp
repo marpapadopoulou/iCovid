@@ -20,6 +20,12 @@
   <body>
 
     <!-- Optional JavaScript; choose one of the two! -->
+    
+     <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOLkFOsO14LjW4PVUVCja9PnvutCyuIc&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -60,6 +66,19 @@
 		</div>
 	</div>
 	</nav>
+	
+	<script>
+		if(window.navigator.geolocation){
+			x=window.navigator.geolocation.getCurrentPosition(success, failure);
+			
+			function success(position){
+				document.getElementById('lat').value=position.coords.latitude;
+				document.getElementById('lng').value=position.coords.longitude;
+		
+			}
+			function failure(){}
+		}
+    </script>
 	
 	<!--register form-->
 	<div id="register">

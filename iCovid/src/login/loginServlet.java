@@ -33,7 +33,7 @@ public class loginServlet extends HttpServlet {
 		Float lat = Float.parseFloat(request.getParameter("lat"));
 		Float lng = Float.parseFloat(request.getParameter("lng"));
 		
-		Float res=Float.parseFloat("0");
+		Float res=(float)0;
 				
 				
 		//create user database model

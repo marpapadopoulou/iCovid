@@ -49,9 +49,9 @@
  var arr = [];
 //populating the 2d array with each user's coords
 <% for (int reg=0; reg<list.size(); reg++) { %>
- 	<% for (int i=0; i<list.size()/2; i++) { %>
+ 	<% for (int i=0; i<list.size()/3; i++) { %>
  	arr.push([]);
- 		<% for (int j=0 ; j<2; j++) { %>
+ 		<% for (int j=0 ; j<3; j++) { %>
 		 	arr[<%= i %>][<%=j%>] = <%= list.get(reg++) %>;
 	 <% } %>
    <% } %>
@@ -78,20 +78,44 @@
 }
 	
 	
-function addMarkers(map,locations){
+	function addMarkers(map,locations){
 		
-	for(var i = 0; i < arr.length; i++ ) {
-		
-		const coord=arr[i];
-		var position = new google.maps.LatLng(coord[0],coord[1]);
-		var marker = new google.maps.Marker({
-		   position: position,
-		    map: map
-		 });
+		for(var i = 0; i < arr.length; i++ ) {
+			
+			
+			const coord=arr[i];
+			
+			
+			var position = new google.maps.LatLng(coord[0],coord[1]);
+			
+			if(coord[2] <= 33){
+			var marker = new google.maps.Marker({
+			   position: position,
+			   map: map,
+			   icon:'http://maps.google.com/mapfiles/kml/paddle/grn-circle.png',
+				
+			 });
+			}
+			
+			if (coord[2] > 33 &&coord[2] <= 66){
+				
+				var marker = new google.maps.Marker({
+				   position: position,
+				   map: map,
+				   icon:'http://maps.google.com/mapfiles/kml/paddle/orange-circle.png',
+					
+				 });
+			}
+			if(coord[2] > 66){
+				var marker = new google.maps.Marker({
+				   position: position,
+				   map: map,
+				   icon:'http://maps.google.com/mapfiles/kml/paddle/red-circle.png',
+				});
+				
+			}
 		}
-		
 	}
-
 						
 </script>
 
@@ -164,7 +188,11 @@ function addMarkers(map,locations){
  
 <h1 class="landing-text-map">Live Covid-19 cases map</h1>
 <div id="map"></div>
-
+<div class="map-info">
+	<p>This map illustrates the epidemiological levels per region according to the users of the application that took the test.
+	The results are displayed in green markers by users with a low probability of getting sick, in orange markers with a medium propability of getting sick and in red markers with a high probability of getting sick.
+	Discover possible cases in your area and protect yourself from getting exposed to coronavirus.</p>
+</div>
  
 	<!--footer-->
 	<footer class="container-fluid text center">
