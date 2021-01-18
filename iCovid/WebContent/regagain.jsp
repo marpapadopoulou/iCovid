@@ -95,10 +95,8 @@
 			<input type="email" name="email" class="form-control"  placeholder="Enter your email here...">
 		</div>
 		
-		 <div class="form-group form-check">
-			<input type="checkbox" class="form-check-input" id="exampleCheck1">
-			<label class="form-check-label" for="exampleCheck1">I agree with the <b>Terms of Use</b></label>
-		 </div>
+			<input type="hidden" name="lat" id="lat" value="">
+		 	<input type="hidden" name="lng" id="lng" value="">
 		
 		 <button type="submit" class="btn"> <i class="fas fa-sign-in-alt"></i> Register</button>
 		 <br><br>
