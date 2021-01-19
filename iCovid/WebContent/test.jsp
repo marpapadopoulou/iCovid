@@ -19,15 +19,6 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
-    <script>
-		$(document).ready(function(){
-   		 	$('input:checkbox').click(function() {
-       		 $('input:checkbox').not(this).prop('checked', false);
-    		});
-		});
-	</script>
-    
-    
   </head>
  
   <body>
@@ -96,7 +87,7 @@
                <td><input type="checkbox" name="gender" value="Other"/>Other</td>
             </tr>
          </table>
-         </div>
+         </div> 
       </div>
 		
 	
@@ -121,7 +112,7 @@
                <td><input type="checkbox" name="age"  value="80+"/>80+</td>
             </tr>
          </table>
-         </div>
+         	</div>
       </div>
       
 		<div class="question">
