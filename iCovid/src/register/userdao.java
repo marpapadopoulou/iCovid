@@ -1,61 +1,138 @@
 package register;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
+
+
 
 public class userdao {
 
-    // Mock data
-    private HashMap<String, user> userDatabase = new HashMap<>();
+	private String dbUrl = "jdbc:postgresql://dpg-cu7skld6147c73frnl20-a:5432/icovid_db";
+    private String dbUname = "icovid_db_user";
+    private String dbPassword = "IeCDe94K0MwPo1SLAENBaKSdgkOKDvrI"; 
+    private String dbDriver = "org.postgresql.Driver";
 
-    public userdao() {
-        // Add some mock users
-        user mockUser = new user();
-        mockUser.setName("Test User");
-        mockUser.setEmail("test@example.com");
-        mockUser.setLat(40.7128f);
-        mockUser.setLng(-74.0060f);
-        mockUser.setRes(0.5f);
 
-        userDatabase.put(mockUser.getEmail(), mockUser);
-    }
 
-    // Mock method for inserting a user
-    public boolean insert(user user) {
-        if (!userDatabase.containsKey(user.getEmail())) {
-            userDatabase.put(user.getEmail(), user);
-            System.out.println("User added: " + user.getEmail());
-            return true;
-        } else {
-            System.out.println("User already exists: " + user.getEmail());
-            return false;
-        }
-    }
-
-    public boolean validate(user user) {
-        // Mock validation: Check if the user email matches the mock user
-        return "test@example.com".equals(user.getEmail());
-    }
-
-    // Mock method to get coordinates
-    public ArrayList<Float> getCoords() {
-        ArrayList<Float> coords = new ArrayList<>();
-        for (user u : userDatabase.values()) {
-            coords.add(u.getLat());
-            coords.add(u.getLng());
-            coords.add(u.getRes());
-        }
-        return coords;
-    }
-
-    // Mock method for updating 'res'
-    public void insertRes(Float res, user user) {
-        if (userDatabase.containsKey(user.getEmail())) {
-            user existingUser = userDatabase.get(user.getEmail());
-            existingUser.setRes(res);
-            System.out.println("Updated res for user: " + user.getEmail());
-        } else {
-            System.out.println("User not found: " + user.getEmail());
-        }
-    }
+	
+	public void loadDriver(String dbDriver){
+		try {
+			Class.forName(dbDriver);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	public Connection getConnection(){
+		Connection con = null ;
+		try {
+			con = DriverManager.getConnection(dbUrl, dbUname, dbPassword);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return con;
+	}
+	
+	//for register user
+	public boolean insert(user user)
+	{
+		boolean res=false;
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		String sql = "INSERT INTO user values(?,?,?,?,?)";
+		
+		PreparedStatement ps;
+		try {
+		ps = con.prepareStatement(sql);
+		ps.setString(1, user.getName());
+		ps.setString(2, user.getEmail());
+		ps.setFloat(3, user.getLat());
+		ps.setFloat(4, user.getLng());
+		ps.setFloat(5, user.getRes());
+		ps.executeUpdate();
+		res=true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	
+	public boolean validate(user user)
+	{
+		boolean status=false;
+		
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		
+		String sql = "SELECT * FROM user WHERE email= ? ";
+		
+		PreparedStatement ps;
+		try {
+		ps = con.prepareStatement(sql);
+		ps.setString(1,user.getEmail());
+		
+		ResultSet rs = ps.executeQuery();
+		status= rs.next();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return status;
+	}
+	
+	public  ArrayList<Float> getCoords()
+	{
+		ArrayList<Float> coords=new ArrayList<Float>();
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		
+		String sql = "SELECT lat,lng,res FROM user";
+		
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				coords.add(rs.getFloat("lat"));
+				coords.add(rs.getFloat("lng"));
+				coords.add(rs.getFloat("res"));
+			}
+			 //System.out.println(coords);
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	}
+	return coords;
+	}
+	
+	public void insertRes(Float res, user user) {
+		
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		
+		String sql="UPDATE user SET res=? WHERE email=?";
+		
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setFloat(1, res);
+			ps.setString(2, user.getEmail());
+			ps.executeUpdate();
+		}catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
