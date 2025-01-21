@@ -11,8 +11,11 @@ COPY . .
 ENV PORT 8080
 EXPOSE 8080
 
-# Build the application (if necessary)
-RUN ./mvnw clean package
+# Install Maven
+RUN apt-get update && apt-get install -y maven
+
+# Build the application
+RUN mvn clean package
 
 # Run the application
 CMD ["java", "-jar", "target/iCovid.war"]
