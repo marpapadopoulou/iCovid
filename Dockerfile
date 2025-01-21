@@ -1,5 +1,5 @@
 # Use a Tomcat base image
-FROM tomcat:9.0-jdk11-openjdk-slim
+FROM tomcat:9.0-jdk17-openjdk-slim
 
 # Remove default webapps
 RUN rm -rf /usr/local/tomcat/webapps/*
