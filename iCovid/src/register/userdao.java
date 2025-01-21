@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class userdao {
 
-	private String dbUrl = "jdbc:postgresql://dpg-cu7skld6147c73frnl20-a:5432/icovid_db";
+    private String dbUrl = "jdbc:postgresql://dpg-cu7skld6147c73frnl20-a:5432/icovid_db";
     private String dbUname = "icovid_db_user";
     private String dbPassword = "IeCDe94K0MwPo1SLAENBaKSdgkOKDvrI"; 
     private String dbDriver = "org.postgresql.Driver";
@@ -47,7 +47,7 @@ public class userdao {
 		boolean res=false;
 		loadDriver(dbDriver);
 		Connection con = getConnection();
-		String sql = "INSERT INTO user values(?,?,?,?,?)";
+		String sql = "INSERT INTO users values(?,?,?,?,?)";
 		
 		PreparedStatement ps;
 		try {
@@ -74,7 +74,7 @@ public class userdao {
 		loadDriver(dbDriver);
 		Connection con = getConnection();
 		
-		String sql = "SELECT * FROM user WHERE email= ? ";
+		String sql = "SELECT * FROM users WHERE email= ? ";
 		
 		PreparedStatement ps;
 		try {
@@ -97,7 +97,7 @@ public class userdao {
 		loadDriver(dbDriver);
 		Connection con = getConnection();
 		
-		String sql = "SELECT lat,lng,res FROM user";
+		String sql = "SELECT lat,lng,res FROM users";
 		
 		PreparedStatement ps;
 		try {
@@ -122,7 +122,7 @@ public class userdao {
 		loadDriver(dbDriver);
 		Connection con = getConnection();
 		
-		String sql="UPDATE user SET res=? WHERE email=?";
+		String sql="UPDATE users SET res=? WHERE email=?";
 		
 		PreparedStatement ps;
 		try {
