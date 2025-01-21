@@ -34,8 +34,10 @@ public class userdao {
 		Connection con = null ;
 		try {
 			con = DriverManager.getConnection(dbUrl, dbUname, dbPassword);
+			System.out.println("Database connection established successfully.");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.println("Failed to establish database connection.");
 			e.printStackTrace();
 		}
 		return con;
