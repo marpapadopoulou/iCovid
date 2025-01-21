@@ -49,7 +49,7 @@ public class userdao {
 		boolean res=false;
 		loadDriver(dbDriver);
 		Connection con = getConnection();
-		String sql = "INSERT INTO users values(?,?,?,?,?)";
+		String sql = "INSERT INTO users  (name, email, lat, lng, res) VALUES (?,?,?,?,?)";
 		
 		PreparedStatement ps;
 		try {
