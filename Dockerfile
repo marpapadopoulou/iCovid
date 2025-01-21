@@ -1,15 +1,15 @@
-# Use an official Java runtime as the base image
-FROM openjdk:11-jdk-slim
+# Use a Tomcat base image
+FROM tomcat:9.0-jdk11-openjdk-slim
 
-# Set the working directory inside the container
-WORKDIR /app
+# Remove default webapps
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your application code to the container
-COPY . .
+# Copy your WAR file into the webapps directory
+COPY iCovid.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose the port Render uses
 ENV PORT 8080
 EXPOSE 8080
 
-# Run the application
-CMD ["java", "-jar", "iCovid.war"]
+# Start Tomcat
+CMD ["catalina.sh", "run"]
