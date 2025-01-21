@@ -32,9 +32,9 @@ public class userdao {
         }
     }
 
-    // Mock method for user validation
     public boolean validate(user user) {
-        return userDatabase.containsKey(user.getEmail());
+        // Mock validation: Check if the user email matches the mock user
+        return "test@example.com".equals(user.getEmail());
     }
 
     // Mock method to get coordinates
