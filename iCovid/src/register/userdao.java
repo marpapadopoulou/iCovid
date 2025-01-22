@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class userdao {
 
-    private String dbUrl = "jdbc:postgresql://icovid_db_user:IeCDe94K0MwPo1SLAENBaKSdgkOKDvrI@dpg-cu7skld6l47c73frnl20-a.frankfurt-postgres.render.com/icovid_db?ssl=true";
+    private String dbUrl = "jdbc:postgresql://dpg-cu7skld6l47c73frnl20-a.frankfurt-postgres.render.com/icovid_db?ssl=true";
     private String dbUname = "icovid_db_user";
     private String dbPassword = "IeCDe94K0MwPo1SLAENBaKSdgkOKDvrI"; 
     private String dbDriver = "org.postgresql.Driver";
