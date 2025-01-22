@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class userdao {
 
-    private String dbUrl = "jdbc:postgresql://dpg-cu7skld6l47c73frnl20-a.frankfurt-postgres.render.com/icovid_db?ssl=true";
+    private String dbUrl = "jdbc:postgresql://dpg-cu7skld6l47c73frnl20-a.frankfurt-postgres.render.com:5432/icovid_db?ssl=true";
     private String dbUname = "icovid_db_user";
     private String dbPassword = "IeCDe94K0MwPo1SLAENBaKSdgkOKDvrI"; 
     private String dbDriver = "org.postgresql.Driver";
@@ -33,12 +33,16 @@ public class userdao {
 	public Connection getConnection(){
 		Connection con = null ;
 		try {
+			Class.forName(dbDriver);
 			con = DriverManager.getConnection(dbUrl, dbUname, dbPassword);
 			System.out.println("Database connection established successfully.");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Failed to establish database connection.");
 			e.printStackTrace();
+		}  catch (ClassNotFoundException e) {
+		        System.out.println("PostgreSQL Driver not found.");
+		        e.printStackTrace();
 		}
 		return con;
 	}
